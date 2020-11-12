@@ -53,10 +53,8 @@ def index():
     for col in rank_columns:
         df[col] = df[col] * 100
         formatters[col] = '{:.2f}%'
+
     df = df[['Receiver', 'Team', 'FP'] + rank_columns]
     df = df.style.hide_index().format(formatters).render()
 
     return render_template('index.html', df=df)
-
-if __name__ == '__main__':
-    app.run()
